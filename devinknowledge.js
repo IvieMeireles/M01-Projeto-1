@@ -37,11 +37,12 @@ function adicionaDica (evento) {
   id: new Date().getTime(),
   titulo: evento.target.titulo.value,
   linguagemSkill: evento.target.linguagemSkill.value,
-  categoria: evento.target.categoria.value,
+  categoria: parseInt(evento.target.categoria.value),
   descricao:evento.target.descricao.value,
  }
  dicas.push(dica);
  exibeDicas();
+ obtemTotal();
 }
 
 function obtemNomeCategoria(id) {
@@ -49,7 +50,7 @@ function obtemNomeCategoria(id) {
   return categoria.nome
 }
 
-function exibeDicas (){
+function exibeDicas(){
   const lista = document.getElementById('lista')
   lista.innerHTML = ''
   dicas.forEach((dica) => {
@@ -79,8 +80,32 @@ function exibeDicas (){
   })
 }
 
+const filtrarDicas = (id) => {
+  const dicasFiltradas = dicas.filter((dica) => dica.categoria === id)
+  return dicasFiltradas;
+}
+
+
+
+function obtemTotal (id) {
+  const dicasFiltradas = filtrarDicas(id);
+  return dicasFiltradas.length;
+  
+}
+
+function filtraDicas() {
+  categorias.forEach((categoria) => {
+    const total = obtemTotal(categoria.id);
+    console.log(categoria.nome, total);
+  })
+}
+
 const formulario = document.getElementById('form-dica')
 formulario.addEventListener('submit', adicionaDica)
 
 // document.body.addEventListener('load', criaCategorias()) alternativa
-document.body.onload = criaCategorias;
+document.body.onload = () => {
+  criaCategorias();
+  obtemTotal();
+  filtraDicas();
+};
