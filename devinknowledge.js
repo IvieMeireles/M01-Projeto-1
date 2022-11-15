@@ -44,12 +44,37 @@ function adicionaDica (evento) {
  exibeDicas();
 }
 
+function obtemNomeCategoria(id) {
+  const categoria = categorias.find((categoria )=> categoria.id === parseInt(id))
+  return categoria.nome
+}
+
 function exibeDicas (){
   const lista = document.getElementById('lista')
   lista.innerHTML = ''
   dicas.forEach((dica) => {
     const li = document.createElement('li')
-    li.innerText = dica.titulo 
+    li.classList.add('list-dica')
+    
+    const titulo = document.createElement('h2')
+    titulo.innerText = dica.titulo
+    titulo.classList.add('subtitulo')
+
+    const linguagemSkill = document.createElement('h3')
+    linguagemSkill.innerText = dica.linguagemSkill
+    linguagemSkill.classList.add('linguagemSkill')
+
+    const subtitulo = document.createElement('p')
+    subtitulo.innerText = obtemNomeCategoria(dica.categoria)
+     
+    const descricao = document.createElement('p')
+    descricao.innerText = dica.descricao
+     
+    li.innerHTML = ''
+    li.appendChild(titulo)
+    li.appendChild(linguagemSkill)
+    li.appendChild(subtitulo)
+    li.appendChild(descricao)
     lista.appendChild(li)
   })
 }
