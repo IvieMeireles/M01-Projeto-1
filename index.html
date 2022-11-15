@@ -6,23 +6,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="devinknowledge.js" async></script>
     <title>DEVinKnowledge</title>
-    <script src="app.js"></script>
 </head>
 <body>
-  <header>
+  <header class="header">
     <img src="./imagens/2313792.png" width="50" alt="LampadaLogo"/>
-    <h1>Seja bem vindo ao DEVinKnowledge</h1>
+    <h1 class="titulo">Seja bem vindo ao DEVinKnowledge</h1>
   </header>
   <main>
     <section>
-     <form class="form" id="formdica"> <!-- Início formulário -->
-        <h2>Cadastre aqui suas dicas</h2>
+     <form class="form" id="form-dica"> <!-- Início formulário -->
+        <h2 class="subtitulo">Cadastre aqui suas dicas</h2>
         <div class="row">
             <div class="column"> 
                 <input class="input" placeholder="Título(mín 8 máx 64)" id="titulo" required minlength="8" maxlength="64">
                 <input class="input" placeholder="Linguagem/Skill(mín 2 máx 16)" id="linguagemSkill" required minlength="2" maxlength="16">
-                <select class="select" id="categoria" placeholder=>
+                <select class="select" id="categoria" required>
                     <option disabled selected="selected">Selecione a Categoria</option>
                 </select>
             </div>
@@ -34,11 +34,15 @@
         
         <div class="botoes">
             <button class="botao-salvar" type="submit">Cadastrar dica</button>
-            <button class="botao-limpar" type="reset">Limpar</button>
+            <button class="botao-limpar" type="reset">Limpar    </button>
         </div>
 
      </form>
     </section>
+
+    <section>  <!-- Lista Total -->
+        <ul id="lista" class="lista"></ul>
+      </section>
 
 </main>
 </body>
