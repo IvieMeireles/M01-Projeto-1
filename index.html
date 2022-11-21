@@ -19,31 +19,40 @@
      <form class="form" id="form-dica"> <!-- Início formulário -->
         <h2 class="subtitulo">Cadastre aqui suas dicas</h2>
         <div class="row">
-            <div class="column"> 
+            <div class="colunaEsq"> 
                 <input class="input" placeholder="Título(mín 8 máx 64)" id="titulo" required minlength="8" maxlength="64">
                 <input class="input" placeholder="Linguagem/Skill(mín 2 máx 16)" id="linguagemSkill" required minlength="2" maxlength="16">
                 <select class="select" id="categoria" required>
                     <option disabled selected="selected">Selecione a Categoria</option>
+                    <textarea required id="descricao" placeholder="Descrição (mín 16 máx 512)" rows="4" minlength="16" maxlength="512"></textarea>
+            <input class="input" id="link" type="url" placeholder="Link do video (opcional)">
                  </select>
+                 <div class="botoes">
+                  <button class="botao-limpar" type="reset">Limpar</button>
+                  <button class="botao-salvar" type="submit">Cadastrar dica</button>
+              </div>
             </div>
-
-            <div class="column"> 
-            <textarea required id="descricao" placeholder="Descrição (mín 16 máx 512)" rows="4" minlength="16" maxlength="512"></textarea>                
+            <div class="colunaDir">
+              <section>
+                <ul id="total" class="lista"></ul>
+              </section>
+            
+            <section class="pesquisa">
+              <input id="input-pesquisa" placeholder="Pesquisar" class="input-pesquisa">
+              <button id="botao-pesquisa" class="botao-pesquisa" type="button">🔎</button>
+            </section>
+            <section>  <!-- Lista Total -->
+              <ul id="lista" class="lista"></ul>
+            </section>
+            <section>
+              <ul id="total" class="lista"></ul>
+            </section>            
           </div>
         </div>
-        
-        <div class="botoes">
-            <button class="botao-salvar" type="submit">Cadastrar dica</button>
-            <button class="botao-limpar" type="reset">Limpar    </button>
-        </div>
-
      </form>
     </section>
 
-    <section>  <!-- Lista Total -->
-        <ul id="lista" class="lista"></ul>
-      </section>
-
+    
 </main>
 </body>
 </html>
