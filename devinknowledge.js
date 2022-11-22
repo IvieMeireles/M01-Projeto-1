@@ -47,6 +47,7 @@ function adicionaDica (evento) {
   descricao:evento.target.descricao.value,
   link:evento.target.link.value,
  }
+ 
  dicas.push(dica);
  salvarDicasLocalStorage(dicas)
  exibeDicas(dicas);
@@ -79,24 +80,17 @@ function exibeDicas(dicas){
     const descricao = document.createElement('p')
     descricao.innerText = dica.descricao
 
-    // if (dica.link !== '') {
       const link = document.createElement('a');
       link.classList.add('link')
       link.href = dica.link;
       link.innerText = dica.link
-    // } else {
-    //   dica.link = ''
-    // }
 
-    const botaoEdita = document.createElement('button')
-
-    
   const botaoExcluir = document.createElement("button")
   botaoExcluir.classList.add('botao-excluir');
   botaoExcluir.innerHTML = 'type="button"';
   botaoExcluir.textContent = '🗑️';
   botaoExcluir.addEventListener('click', () => {
-    botaoExcluir.parentElement.remove(),excluirDica(), alert('Dica excluída com sucesso (Apenas do HTML!) \nNão consegui excluir do localstorage :(');
+    botaoExcluir.parentElement.remove(), alert('Dica excluída com sucesso (Apenas do HTML!) \nNão consegui excluir do localstorage :(');
   
   })
   
@@ -112,35 +106,6 @@ function exibeDicas(dicas){
   })
 }
 
-function excluirDica(id){
-
-  const localStorageItem = localStorage.getItem(STORAGE_KEY);
-
-const localStorageFiltrado = localStorageItem.filter(item =>  item.id !== idASerFiltrado):
-
-localStorage.setItem("nomeDaVariavel", localStorageItem)
-//   let lista = JSON.parse(localStorage.getItem(STORAGE_KEY))
-// //   lista.forEach((item) => {
-// //   console.log(lista);
-// //   console.log(item);
-// //   console.log(item.id);
-  
-// //     if(id === item.id) {
-// //       console.log(item);
-
-// // }})
-
-// let items = JSON.parse(localStorage.getItem(STORAGE_KEY));
-//   for (var i = 0; i < items.length; i++) {
-//      if(items[i].itemId == 3){
-//        items.splice(i,1);
-//        break;
-//      }
-// console.log(items);
-
-
-}}
-
 function obtemNomeCategoria(id) {
   const categoria = categorias.find((categoria )=> categoria.id === id)
   return categoria.nome;
@@ -148,7 +113,6 @@ function obtemNomeCategoria(id) {
 
 const filtrarDicas = (id) => {
   const dicasFiltradas = dicas.filter((dica) => dica.categoria === id)
-  // console.log(dicasFiltradas);
   return dicasFiltradas;
 }
 
@@ -218,18 +182,6 @@ const obterDicasLocalStorage = () => {
   return dicasLS ? JSON.parse(dicasLS) : [];
   
 };
-
-
-
-// document.body.addEventListener('load', criaCategorias()) alternativa
-// document.body.onload = () => {
-//   dicas = obterDicasLocalStorage();
-//   criaCategorias();
-//   obtemTotalDicasPorCategoria();
-//   exibeCategorias();
-//   exibeDicas();
-//   filtraDicasPorCategoria();
-// };
 
 function carregarDadosIniciais () {
   criaCategorias();
